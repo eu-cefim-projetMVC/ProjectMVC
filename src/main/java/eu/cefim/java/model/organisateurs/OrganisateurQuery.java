@@ -15,12 +15,12 @@ import java.util.List;
 public class OrganisateurQuery {
 
     public static Organisateur findOne(String mail) throws SQLException {
-        BeanHandler<Organisateur> beanHandler = new BeanHandler<>(Organisateur.class);
+        OrganisateurHandler organisateurHandler = new OrganisateurHandler();
 
         QueryRunner runner = new QueryRunner();
 
         String query = "SELECT * FROM organisateur WHERE mail =  ? LIMIT 1";
-        Organisateur organisateur = runner.query(AccesBdd.getConnection(), query, beanHandler, mail);
+        Organisateur organisateur = runner.query(AccesBdd.getConnection(), query, organisateurHandler, mail);
 
         return organisateur;
     }
