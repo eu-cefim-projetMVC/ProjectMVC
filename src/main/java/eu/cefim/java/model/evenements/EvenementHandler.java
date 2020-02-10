@@ -31,8 +31,8 @@ public class EvenementHandler extends BeanListHandler<Evenement> {
         String query = "SELECT * FROM organisateur WHERE id = ? LIMIT 1";
 
         for (Evenement evenement : evenements) {
-            Connection con = AccesBdd.getConnection();
-            Organisateur organisateur = runner.query(con, query, handler, evenement.getOrganisateurId());
+
+            Organisateur organisateur = runner.query(AccesBdd.getConnection(), query, handler, evenement.getOrganisateurId());
             evenement.setOrganisateur(organisateur);
         }
         return evenements;
