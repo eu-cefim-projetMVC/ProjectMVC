@@ -1,5 +1,7 @@
 package eu.cefim.java.model.evenements;
 
+
+import eu.cefim.java.model.AccesBdd;
 import eu.cefim.java.model.organisateurs.Organisateur;
 import org.apache.commons.dbutils.BasicRowProcessor;
 import org.apache.commons.dbutils.BeanProcessor;
@@ -16,11 +18,8 @@ import java.util.Map;
 
 public class EvenementHandler extends BeanListHandler<Evenement> {
 
-    private Connection connection;
-
-    public EvenementHandler(Connection connexion){
+    public EvenementHandler(){
         super(Evenement.class, new BasicRowProcessor(new BeanProcessor(mapColumnsToFields())));
-        connection = connexion;
     }
 
     @Override
@@ -32,7 +31,8 @@ public class EvenementHandler extends BeanListHandler<Evenement> {
         String query = "SELECT * FROM organisateur WHERE id = ? LIMIT 1";
 
         for (Evenement evenement : evenements) {
-            Organisateur organisateur = runner.query(connection, query, handler, evenement.getOrganisateurId());
+
+            Organisateur organisateur = runner.query(AccesBdd.getConnection(), query, handler, evenement.getOrganisateurId());
             evenement.setOrganisateur(organisateur);
         }
         return evenements;
