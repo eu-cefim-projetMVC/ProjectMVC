@@ -1,9 +1,11 @@
 package eu.cefim.java.model.organisateurs;
 
 
+import eu.cefim.java.model.evenements.Evenement;
 import eu.cefim.java.model.typeCompte.TypeCompte;
 
 import java.util.Date;
+import java.util.List;
 
 public class Organisateur {
     private int id;
@@ -14,6 +16,7 @@ public class Organisateur {
     private Date dateDerniereConnexion;
     private TypeCompte typeCompte;
     private Organisateur parrainMail;
+    private List<Evenement> evenements;
 
     public Organisateur() {
 
@@ -75,16 +78,24 @@ public class Organisateur {
         this.typeCompte = typeCompte;
     }
 
-    public Organisateur getMailParrain() {
+    public Organisateur getParrainMail() {
         return parrainMail;
     }
 
-    public void setMailParrain(Organisateur parrainMail) {
+    public void setParrainMail(Organisateur parrainMail) {
         this.parrainMail = parrainMail;
     }
 
-    public void find(){
-
+    public List<Evenement> getEvenements() {
+        return evenements;
     }
-    
+
+    public void setEvenements(List<Evenement> evenements) {
+        this.evenements = evenements;
+    }
+
+    @Override
+    public String toString() {
+        return  "{ " + parrainMail + "}";
+    }
 }
