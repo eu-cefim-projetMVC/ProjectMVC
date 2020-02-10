@@ -1,7 +1,10 @@
 package eu.cefim.java.model.organisateurs;
 
 
+import eu.cefim.java.model.evenements.Evenement;
+
 import java.util.Date;
+import java.util.List;
 
 public class Organisateur {
     private int id;
@@ -10,6 +13,7 @@ public class Organisateur {
     private String mail;
     private String password;
     private Date dateDerniereConnexion;
+    private List<Evenement> evenements;
 
     public Organisateur() {
 
@@ -63,8 +67,12 @@ public class Organisateur {
         this.dateDerniereConnexion = dateDerniereConnexion;
     }
 
-    public void find(){
+    public List<Evenement> getEvenements() {
+        return evenements;
+    }
 
+    public void setEvenements(List<Evenement> evenements) {
+        this.evenements = evenements;
     }
 
     @Override
