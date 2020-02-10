@@ -13,6 +13,7 @@ public class Organisateur {
     private String password;
     private Date dateDerniereConnexion;
     private TypeCompte typeCompte;
+    private Organisateur parrainMail;
 
     public Organisateur() {
 
@@ -74,17 +75,16 @@ public class Organisateur {
         this.typeCompte = typeCompte;
     }
 
+    public Organisateur getMailParrain() {
+        return parrainMail;
+    }
+
+    public void setMailParrain(Organisateur parrainMail) {
+        this.parrainMail = parrainMail;
+    }
+
     public void find(){
 
     }
-
-    @Override
-    public String toString() {
-        return
-                "Bonjour " + mail + '\n' +
-                "id : " + id +
-                ", type de compte" + typeCompteId +
-                ", parrain ='" + parrainId +
-                '\n';
-    }
+    
 }

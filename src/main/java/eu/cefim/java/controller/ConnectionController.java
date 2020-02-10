@@ -9,9 +9,11 @@ import javax.swing.*;
 public class ConnectionController {
     public static void start() {
         SwingUtilities.invokeLater(() -> {
+
             WindowConnexion windowConnexion = new WindowConnexion();
             windowConnexion.setVisible(true);
             windowConnexion.loginButton.addActionListener(e -> {
+
                 Thread monThread = new Thread(() -> {
                     try {
                         String mail = windowConnexion.mailTextField.getText();

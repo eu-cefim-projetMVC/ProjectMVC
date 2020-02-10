@@ -7,10 +7,33 @@ import java.awt.*;
 
 public class OrganisateurHome extends JFrame {
 
-    JLabel organisateurLabel;
+    public JLabel mailLabel;
+    public JLabel idLabel;
+    public JLabel typeCompteLabel;
+    public JLabel mailParrainLabel;
 
     public OrganisateurHome(Organisateur organisateur) {
-        organisateurLabel = new JLabel(organisateur.toString());
+        setTitle("Accueil Organisateur");
+        setMinimumSize(new Dimension(312, 387));
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        mailLabel = new JLabel(organisateur.getMail());
+        mailLabel.setText("Bonjour " + organisateur.getMail());
+
+        idLabel = new JLabel(String.valueOf(organisateur.getId()));
+        idLabel.setText("id : " + organisateur.getId());
+
+        typeCompteLabel = new JLabel(organisateur.getTypeCompte().toString());
+        typeCompteLabel.setText("type du compte : " + organisateur.getTypeCompte());
+
+//        mailParrainLabel = new JLabel(organisateur.getMailParrain());
+//        if (organisateur.getMailParrain() != null)
+//        {
+//            mailParrainLabel.setText("id :" + organisateur.getMailParrain());
+//        } else {
+//            mailParrainLabel.setText("Pas de parrain");
+//        }
 
         defineLayout();
     }
@@ -25,14 +48,32 @@ public class OrganisateurHome extends JFrame {
 
         gl.setHorizontalGroup(gl.createParallelGroup()
                 .addGroup(gl.createSequentialGroup()
-                        .addComponent(organisateurLabel)
+                        .addComponent(mailLabel)
                 )
+                .addGroup(gl.createSequentialGroup()
+                        .addComponent(idLabel)
+                )
+                .addGroup(gl.createSequentialGroup()
+                        .addComponent(typeCompteLabel)
+                )
+//                .addGroup(gl.createSequentialGroup()
+//                        .addComponent(mailParrainLabel)
+//                )
         );
 
         gl.setVerticalGroup(gl.createSequentialGroup()
                 .addGroup(gl.createParallelGroup()
-                        .addComponent(organisateurLabel)
+                        .addComponent(mailLabel)
                 )
+                .addGroup(gl.createParallelGroup()
+                        .addComponent(idLabel)
+                )
+                .addGroup(gl.createParallelGroup()
+                        .addComponent(typeCompteLabel)
+                )
+//                .addGroup(gl.createParallelGroup()
+//                        .addComponent(mailParrainLabel)
+//                )
         );
 
         pack();
