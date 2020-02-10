@@ -24,16 +24,15 @@ public class OrganisateurHome extends JFrame {
         idLabel = new JLabel(String.valueOf(organisateur.getId()));
         idLabel.setText("id : " + organisateur.getId());
 
-        typeCompteLabel = new JLabel(organisateur.getTypeCompte().toString());
-        typeCompteLabel.setText("type du compte : " + organisateur.getTypeCompte());
+        typeCompteLabel = new JLabel("type du compte : " + organisateur.getTypeCompte());
 
-//        mailParrainLabel = new JLabel(organisateur.getMailParrain());
-//        if (organisateur.getMailParrain() != null)
-//        {
-//            mailParrainLabel.setText("id :" + organisateur.getMailParrain());
-//        } else {
-//            mailParrainLabel.setText("Pas de parrain");
-//        }
+        mailParrainLabel = new JLabel();
+        if (organisateur.getParrainMail() != null)
+        {
+            mailParrainLabel.setText("mail parrain :" + organisateur.getParrainMail());
+        } else {
+            mailParrainLabel.setText("Pas de parrain");
+        }
 
         defineLayout();
     }
@@ -56,9 +55,9 @@ public class OrganisateurHome extends JFrame {
                 .addGroup(gl.createSequentialGroup()
                         .addComponent(typeCompteLabel)
                 )
-//                .addGroup(gl.createSequentialGroup()
-//                        .addComponent(mailParrainLabel)
-//                )
+                .addGroup(gl.createSequentialGroup()
+                        .addComponent(mailParrainLabel)
+                )
         );
 
         gl.setVerticalGroup(gl.createSequentialGroup()
@@ -71,9 +70,9 @@ public class OrganisateurHome extends JFrame {
                 .addGroup(gl.createParallelGroup()
                         .addComponent(typeCompteLabel)
                 )
-//                .addGroup(gl.createParallelGroup()
-//                        .addComponent(mailParrainLabel)
-//                )
+                .addGroup(gl.createParallelGroup()
+                        .addComponent(mailParrainLabel)
+                )
         );
 
         pack();
