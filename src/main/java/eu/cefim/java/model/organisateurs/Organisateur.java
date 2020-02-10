@@ -1,6 +1,8 @@
 package eu.cefim.java.model.organisateurs;
 
 
+import eu.cefim.java.model.typeCompte.TypeCompte;
+
 import java.util.Date;
 
 public class Organisateur {
@@ -10,6 +12,7 @@ public class Organisateur {
     private String mail;
     private String password;
     private Date dateDerniereConnexion;
+    private TypeCompte typeCompte;
 
     public Organisateur() {
 
@@ -63,6 +66,14 @@ public class Organisateur {
         this.dateDerniereConnexion = dateDerniereConnexion;
     }
 
+    public TypeCompte getTypeCompte() {
+        return typeCompte;
+    }
+
+    public void setTypeCompte(TypeCompte typeCompte) {
+        this.typeCompte = typeCompte;
+    }
+
     public void find(){
 
     }
@@ -70,10 +81,10 @@ public class Organisateur {
     @Override
     public String toString() {
         return
-                "OrganisateurLogin{" +
-                "id =" + id +
-                ", mail ='" + mail + '\'' +
-                '}' +
+                "Bonjour " + mail + '\n' +
+                "id : " + id +
+                ", type de compte" + typeCompteId +
+                ", parrain ='" + parrainId +
                 '\n';
     }
 }
