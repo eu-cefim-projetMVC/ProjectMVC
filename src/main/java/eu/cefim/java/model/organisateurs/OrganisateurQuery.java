@@ -1,5 +1,6 @@
 package eu.cefim.java.model.organisateurs;
 
+import eu.cefim.java.model.AccesBdd;
 import eu.cefim.java.model.clients.Client;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
@@ -13,13 +14,13 @@ import java.util.List;
 
 public class OrganisateurQuery {
 
-    public static Organisateur findOne(Connection connection, String mail) throws SQLException {
+    public static Organisateur findOne(String mail) throws SQLException {
         BeanHandler<Organisateur> beanHandler = new BeanHandler<>(Organisateur.class);
 
         QueryRunner runner = new QueryRunner();
 
-        String query = "SELECT * FROM organisateur WHERE mail = " + mail + " LIMIT 1";
-        Organisateur organisateur = runner.query(connection, query, beanHandler, mail);
+        String query = "SELECT * FROM organisateur WHERE mail =  ? LIMIT 1";
+        Organisateur organisateur = runner.query(AccesBdd.getConnection(), query, beanHandler, mail);
 
         return organisateur;
     }

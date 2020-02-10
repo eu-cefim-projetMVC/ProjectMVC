@@ -1,5 +1,7 @@
 package eu.cefim.java.vue.organisateurs;
 
+import eu.cefim.java.model.organisateurs.Organisateur;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,8 +9,8 @@ public class OrganisateurHome extends JFrame {
 
     JLabel organisateurLabel;
 
-    public OrganisateurHome() {
-        organisateurLabel = new JLabel();
+    public OrganisateurHome(Organisateur organisateur) {
+        organisateurLabel = new JLabel(organisateur.toString());
 
         defineLayout();
     }

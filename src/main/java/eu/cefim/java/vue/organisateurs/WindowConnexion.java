@@ -3,7 +3,7 @@ package eu.cefim.java.vue.organisateurs;
 import javax.swing.*;
 import java.awt.*;
 
-public class OrganisateurLogin extends JFrame {
+public class WindowConnexion extends JFrame {
     public JLabel mailLabel;
     public JTextField mailTextField;
 
@@ -14,7 +14,7 @@ public class OrganisateurLogin extends JFrame {
 
     public  JLabel erreurLoginLabel;
 
-    public OrganisateurLogin() {
+    public WindowConnexion() {
         setTitle("OrganisateurLogin");
         setMinimumSize(new Dimension(312, 387));
         setLocationRelativeTo(null);
