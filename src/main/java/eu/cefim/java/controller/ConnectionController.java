@@ -25,6 +25,9 @@ public class ConnectionController {
                                windowConnexion.setVisible(false);
                                AccueilController.start(organisateur);
                            }
+                           if (mail.equals(organisateur.getMail()) && !(pass.equals(organisateur.getPassword()))) {
+                               JOptionPane.showMessageDialog(windowConnexion, "Identifiants incorrects !");
+                            }
                         }
                         else {
                             JOptionPane.showMessageDialog(windowConnexion, "Veuillez remplir tous les champs !");
