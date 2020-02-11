@@ -29,7 +29,7 @@ public class OrganisateurHome extends JFrame {
         mailParrainLabel = new JLabel();
         if (organisateur.getParrainMail() != null)
         {
-            mailParrainLabel.setText("mail parrain :" + organisateur.getParrainMail().getMail());
+            mailParrainLabel.setText("mail parrain : " + organisateur.getParrainMail().getMail());
         } else {
             mailParrainLabel.setText("Pas de parrain");
         }
