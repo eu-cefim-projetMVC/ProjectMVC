@@ -24,12 +24,12 @@ public class OrganisateurHome extends JFrame {
         idLabel = new JLabel(String.valueOf(organisateur.getId()));
         idLabel.setText("id : " + organisateur.getId());
 
-        typeCompteLabel = new JLabel("type du compte : " + organisateur.getTypeCompte());
+        typeCompteLabel = new JLabel("type du compte : " + organisateur.getTypeCompte().getNom());
 
         mailParrainLabel = new JLabel();
         if (organisateur.getParrainMail() != null)
         {
-            mailParrainLabel.setText("mail parrain :" + organisateur.getParrainMail());
+            mailParrainLabel.setText("mail parrain :" + organisateur.getParrainMail().getMail());
         } else {
             mailParrainLabel.setText("Pas de parrain");
         }

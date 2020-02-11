@@ -33,7 +33,7 @@ public class OrganisateurHandler extends BeanHandler<Organisateur> {
             organisateur.setEvenements(evenements);
 
             BeanHandler<TypeCompte> handler2 = new BeanHandler<>(TypeCompte.class);
-            String query2 = "SELECT * FROM type_compte WHERE nom = ?";
+            String query2 = "SELECT * FROM type_compte WHERE id = ?";
             TypeCompte typeCompte = runner.query(AccesBdd.getConnection(), query2, handler2, organisateur.getTypeCompteId());
             organisateur.setTypeCompte(typeCompte);
 

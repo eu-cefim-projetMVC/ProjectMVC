@@ -93,9 +93,4 @@ public class Organisateur {
     public void setEvenements(List<Evenement> evenements) {
         this.evenements = evenements;
     }
-
-    @Override
-    public String toString() {
-        return  "{ " + parrainMail + "}";
-    }
 }
