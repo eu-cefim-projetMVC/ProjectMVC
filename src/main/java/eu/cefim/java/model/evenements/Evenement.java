@@ -10,6 +10,34 @@ public class Evenement {
     private String nom;
     private Date dateEvenement;
     private Organisateur organisateur;
+    private Long nbBilletsMax;
+    private Long nbBilletsVendus;
+    private Long nbBilletsPanier;
+
+    public Long getNbBilletsMax() {
+        return nbBilletsMax;
+    }
+
+    public void setNbBilletsMax(Long nbBilletsMax) {
+        this.nbBilletsMax = nbBilletsMax;
+    }
+
+    public Long getNbBilletsVendus() {
+        return nbBilletsVendus;
+    }
+
+    public void setNbBilletsVendus(Long nbBilletsVendus) {
+        this.nbBilletsVendus = nbBilletsVendus;
+    }
+
+    public Long getNbBilletsPanier() {
+        return nbBilletsPanier;
+    }
+
+    public void setNbBilletsPanier(Long nbBilletsPaniers) {
+        this.nbBilletsPanier = nbBilletsPaniers;
+    }
+
 
     public Evenement() {
 
@@ -55,7 +83,7 @@ public class Evenement {
         this.organisateur = organisateur;
     }
 
-    public void find(){
+    public void find() {
 
     }
 
