@@ -20,7 +20,7 @@ public class OrganisateurQuery {
         QueryRunner runner = new QueryRunner();
 
         String query = "SELECT * FROM organisateur WHERE mail =  ? LIMIT 1";
-        Organisateur organisateur = runner.query(AccesBdd.getConnection(), query, organisateurHandler, mail);
+        Organisateur organisateur = runner. query(AccesBdd.getConnection(), query, organisateurHandler, mail);
 
         return organisateur;
     }

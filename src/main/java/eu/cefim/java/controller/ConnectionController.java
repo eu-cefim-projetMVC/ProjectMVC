@@ -1,10 +1,13 @@
 package eu.cefim.java.controller;
 
+import eu.cefim.java.model.evenements.Evenement;
 import eu.cefim.java.model.organisateurs.Organisateur;
 import eu.cefim.java.model.organisateurs.OrganisateurQuery;
 import eu.cefim.java.vue.organisateurs.WindowConnexion;
 
 import javax.swing.*;
+import javax.swing.table.AbstractTableModel;
+import java.util.List;
 
 public class ConnectionController {
     public static void start() {
@@ -19,11 +22,18 @@ public class ConnectionController {
                         String mail = windowConnexion.mailTextField.getText();
                         String pass = new String(windowConnexion.passwordPasswordField.getPassword());
                         if (!mail.equals("") && !pass.equals("")) {
+
                            Organisateur organisateur = OrganisateurQuery.findOne(mail);
-                           if (pass.equals(organisateur.getPassword())) {
+                           if (organisateur != null && pass.equals(organisateur.getPassword())) {
+
                                JOptionPane.showMessageDialog(windowConnexion, "Connexion réussie !");
                                windowConnexion.setVisible(false);
                                AccueilController.start(organisateur);
+
+                           }
+                           else {
+                               JOptionPane.showMessageDialog(windowConnexion, "Identifiants incorrects !");
+
                            }
                            if (mail.equals(organisateur.getMail()) && !(pass.equals(organisateur.getPassword()))) {
                                JOptionPane.showMessageDialog(windowConnexion, "Identifiants incorrects !");
@@ -42,3 +52,7 @@ public class ConnectionController {
         });
     }
 }
+
+
+
+
