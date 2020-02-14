@@ -67,4 +67,19 @@ public class Billet {
     public void setOrganisateurId(long organisateurId) {
         this.organisateurId = organisateurId;
     }
+
+    @Override
+    public String toString() {
+        return "Billet{" +
+                "id=" + id +
+                ", evenementId=" + evenementId +
+                ", categorieBilletId=" + categorieBilletId +
+                ", panierClientId=" + panierClientId +
+                ", achatClientId=" + achatClientId +
+                ", code='" + code + '\'' +
+                ", dateAction=" + dateAction +
+                ", nombrePassages=" + nombrePassages +
+                ", organisateurId=" + organisateurId +
+                '}';
+    }
 }

@@ -14,11 +14,15 @@ import eu.cefim.java.vue.administrateurs.WindowQrCodeBillet;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URI;
 import java.sql.SQLException;
 
 public class BilletQrCodeController {
@@ -30,8 +34,8 @@ public class BilletQrCodeController {
                 Thread monThread = new Thread(() -> {
                     String idBillet = windowQrCodeBillet.idTextField.getText();
                     try {
-                        Billet billet = BilletQrCodeQuery.findOne(idBillet);
-                        if (idBillet.equals(String.valueOf(billet.getId()))) {
+                        Billet billet = BilletQrCodeQuery.findOne(Integer.parseInt(idBillet));
+                        if (idBillet.equals(String.valueOf(billet.getId())) && billet.getCode() != null) {
                             JOptionPane.showMessageDialog(windowQrCodeBillet, "La génération du Qr code du billet avec l'id : " + idBillet + " à réussi");
                             BitMatrix bitMatrix = generateMatrix(billet.getCode(),400);
                             String imageFormat = "png";
@@ -39,11 +43,14 @@ public class BilletQrCodeController {
                             writeImage(outputFileName, imageFormat, bitMatrix);
                             BufferedImage myPicture = ImageIO.read(new File(outputFileName));
                             windowQrCodeBillet.qrCode.setIcon(new ImageIcon(myPicture));
+                            windowQrCodeBillet.urlQrCode.setText("http://localhost:8081/qrcode/" + billet.getCode());
                             windowQrCodeBillet.add(windowQrCodeBillet.qrCode);
+                            windowQrCodeBillet.add(windowQrCodeBillet.urlQrCode);
+
                             windowQrCodeBillet.pack();
                         }
                         else {
-                            JOptionPane.showMessageDialog(windowQrCodeBillet, "Oups... Le billet avec l'id : " + idBillet + " n'existe pas !");
+                            JOptionPane.showMessageDialog(windowQrCodeBillet, "Oups... Le billet avec l'id : " + idBillet + " n'existe pas ou il est encore dans un panier !");
                         }
                     } catch (SQLException | WriterException | IOException ex) {
                         ex.printStackTrace();
@@ -51,6 +58,15 @@ public class BilletQrCodeController {
                 });
                 monThread.start();
             });
+            windowQrCodeBillet.urlQrCode.addMouseListener((new MouseAdapter() {
+                public void mousePressed(MouseEvent me) {
+                    try {
+                        Desktop.getDesktop().browse(URI.create(windowQrCodeBillet.urlQrCode.getText()));
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }}));
         });
     }
 
