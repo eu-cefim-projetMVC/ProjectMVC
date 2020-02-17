@@ -9,6 +9,7 @@ public class WindowQrCodeBillet extends JFrame {
     public JTextField idTextField;
     public JLabel qrCode;
     public JButton validateButton;
+    public JLabel urlQrCode;
 
     public WindowQrCodeBillet() {
         setTitle("Génération QrCode Billet");
@@ -23,7 +24,10 @@ public class WindowQrCodeBillet extends JFrame {
         idTextField.setMaximumSize(new Dimension(100, 25));
 
         qrCode = new JLabel();
-        qrCode.setMinimumSize(new Dimension(400, 400));
+        qrCode.setMinimumSize(new Dimension(320, 320));
+
+        urlQrCode = new JLabel();
+        urlQrCode.setMinimumSize(new Dimension(190, 25));
 
         validateButton = new JButton("Génération QrCode du billet");
         validateButton.setMinimumSize(new Dimension(200, 25));
@@ -48,6 +52,8 @@ public class WindowQrCodeBillet extends JFrame {
                 )
                 .addGroup(gl.createParallelGroup()
                         .addComponent(qrCode))
+                .addGroup(gl.createSequentialGroup()
+                        .addComponent(urlQrCode))
         );
 
         gl.setVerticalGroup(gl.createSequentialGroup()
@@ -58,6 +64,9 @@ public class WindowQrCodeBillet extends JFrame {
                 )
                 .addGroup(gl.createSequentialGroup()
                         .addComponent(qrCode))
+                .addGroup(gl.createParallelGroup()
+                        .addComponent(urlQrCode))
+
         );
 
         pack();
